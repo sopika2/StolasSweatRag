@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>—</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --bg: #08080a;
+            --fg: #c9c9d0;
+            --faint: #4a4a55;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: radial-gradient(ellipse at center, #101014 0%, #08080a 55%, #000000 100%);
+            color: var(--fg);
+            font-family: Georgia, 'Times New Roman', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* slow-breathing vignette */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%);
+            animation: breathe 9s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.85; }
+            50%      { opacity: 1; }
+        }
+
+        main {
+            max-width: 640px;
+            animation: surface 4s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes surface {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* ── editable copy ── */
+        .line {
+            font-size: clamp(1.15rem, 4vw, 1.9rem);
+            font-weight: normal;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        .rule {
+            width: 1px;
+            height: 56px;
+            margin: 36px auto;
+            background: linear-gradient(to bottom, transparent, var(--faint), transparent);
+        }
+
+        .mark {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--faint);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="line">Whoever you came here looking for<br>isn't here anymore.</p>
+        <div class="rule"></div>
+        <p class="mark">closed</p>
+    </main>
+</body>
+</html>
